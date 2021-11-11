@@ -7,6 +7,7 @@ import {
 import Login from './pages/Login/Login/Login';
 import Home from './pages/Home/Home/Home';
 import NotFound from './pages/NotFound/NotFound';
+import Register from './pages/Login/Register/Register';
 
 
 function App() {
@@ -23,6 +24,9 @@ function App() {
           </Route>
           <Route path="/login">
             <Login></Login>
+          </Route>
+          <Route path="/register">
+            <Register></Register>
           </Route>
           <Route path="*">
             <NotFound></NotFound>
