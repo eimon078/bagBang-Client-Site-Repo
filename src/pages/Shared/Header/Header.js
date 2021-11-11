@@ -12,11 +12,18 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 import { Link, NavLink } from 'react-router-dom';
 import { Button, Container } from '@material-ui/core';
 import LogoutIcon from '@mui/icons-material/Logout';
+import useAuth from '../../../hooks/useAuth';
 
 
 
 const Header = () => {
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+    const { logout, user } = useAuth();
+
+    //Handle Logout
+    const handleLogout = () => {
+        logout();
+    }
 
 
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -60,10 +67,14 @@ const Header = () => {
             <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', m: 2, p: 2 }}>
                 <MenuItem><Link style={linkColor} to="/">Home</Link></MenuItem>
                 <MenuItem sx={{ p: 1 }}><Link style={linkColor} to="/products">Our Products</Link></MenuItem>
-                <MenuItem><Link style={linkColor} to="/login">Login</Link></MenuItem>
-                <MenuItem><Link style={linkColor} to="/dashboard">Dashboard</Link></MenuItem>
-                <MenuItem><Typography>Eimon Hossain Tief</Typography> </MenuItem>
-                <MenuItem><Button variant="outlined" style={{ backgroundColor: "rgb(231, 76, 60 )", color: 'white' }}><LogoutIcon style={{ color: "white" }} /> <LogoutIcon sx={{ pr: 1 }} />Logout</Button></MenuItem>
+                {
+                    user.email ? <>
+                        <MenuItem><Link style={linkColor} to="/dashboard">Dashboard</Link></MenuItem>
+                        <MenuItem><Typography>{user.displayName}</Typography> </MenuItem>
+                        <MenuItem><Button variant="outlined" style={{ backgroundColor: "rgb(231, 76, 60 )", color: 'white' }} onClick={handleLogout}><LogoutIcon sx={{ pr: 1 }} style={{ color: "white" }} />Logout</Button></MenuItem>
+                    </> :
+                        <MenuItem><Link style={linkColor} to="/login">Login</Link></MenuItem>
+                }
             </Box>
         </Menu>
     );
@@ -88,9 +99,14 @@ const Header = () => {
                             <Typography sx={{ p: 1 }}><Link style={desktopLinkColor} to='/home'>Home</Link></Typography>
                             <Typography sx={{ p: 1 }}><Link style={desktopLinkColor} to='/products'>Our Products</Link></Typography>
                             <Typography sx={{ p: 1 }}><Link style={desktopLinkColor} to='/login'>Login</Link></Typography>
-                            <Typography sx={{ p: 1 }}><Link style={desktopLinkColor} to="/dashboard">Dashboard</Link></Typography>
-                            <Typography sx={{ p: 1 }} style={desktopLinkColor}>Eimon Hossain Taief</Typography>
-                            <Typography sx={{ p: 1 }}><Button variant="outlined" style={{ backgroundColor: "rgb(231, 76, 60 )", color: 'white' }}><LogoutIcon sx={{ pr: 1 }} />Logout</Button></Typography>
+                            {
+                                user.email ? <>
+                                    <Typography sx={{ p: 1 }}><Link style={desktopLinkColor} to="/dashboard">Dashboard</Link></Typography>
+                                    <Typography sx={{ p: 1 }} style={desktopLinkColor}>{user.displayName}</Typography>
+                                    <Typography sx={{ p: 1 }}><Button variant="outlined" style={{ backgroundColor: "rgb(231, 76, 60 )", color: 'white' }} onClick={handleLogout}><LogoutIcon sx={{ pr: 1 }} />Logout</Button></Typography>
+                                </> :
+                                    <Typography sx={{ p: 1 }}><Link style={desktopLinkColor} to='/login'>Login</Link></Typography>
+                            }
                         </Box>
                         <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
                             <IconButton
@@ -102,7 +118,6 @@ const Header = () => {
                                 color="inherit"
                             >
                                 <MenuIcon />
-                                <LogoutIcon />
                             </IconButton>
                         </Box>
                     </Toolbar>

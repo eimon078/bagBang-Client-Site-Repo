@@ -9,9 +9,17 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { Link } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
+import { Alert } from '@mui/material';
+import { useHistory } from 'react-router';
 
 const Register = () => {
-    const [registerData, setRegisterData] = React.useState({ email: "", password: "" })
+    const { registerUser } = useAuth();
+    const [passwordError, setPasswordError] = React.useState(false);
+    const history = useHistory()
+    const [registerData, setRegisterData] = React.useState({ email: "", password: "", userName: "" })
+
+    //Handle OnBlur
     const handleOnBlur = e => {
         const name = e.target.name;
         const value = e.target.value;
@@ -20,16 +28,20 @@ const Register = () => {
         console.log(newValue);
 
     }
-    const handleSubmit = e => {
 
-        // const data = new FormData(event.currentTarget);
-        // // eslint-disable-next-line no-console
-        // console.log({
-        //     email: data.get('email'),
-        //     password: data.get('password'),
-        // });
+    //HandleSubmit
+    const handleSubmit = e => {
+        if (registerData.password.length < 6) {
+            setPasswordError(true);
+            e.preventDefault();
+            return;
+        }
+        setPasswordError(false);
+        //user register
+        registerUser(registerData.email, registerData.password, registerData.userName, history);
         e.preventDefault();
     };
+
     return (
         <Container component="main" maxWidth="xs">
             <CssBaseline />
@@ -45,12 +57,12 @@ const Register = () => {
                     <LockOutlinedIcon />
                 </Avatar>
                 <Typography component="h1" variant="h5">
-                    Sign in
+                    Please Register
                 </Typography>
-                <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+                <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
                     <TextField
                         margin="normal"
-                        required
+                        required={true}
                         fullWidth
                         onBlur={handleOnBlur}
                         id="userName"
@@ -61,7 +73,7 @@ const Register = () => {
                     />
                     <TextField
                         margin="normal"
-                        required
+                        required={true}
                         fullWidth
                         onBlur={handleOnBlur}
                         id="email"
@@ -69,9 +81,10 @@ const Register = () => {
                         name="email"
                         autoComplete="email"
                     />
+                    {passwordError && <Alert severity="error">This is an error alert — check it out!</Alert>}
                     <TextField
                         margin="normal"
-                        required
+                        required={true}
                         fullWidth
                         onBlur={handleOnBlur}
                         name="password"
@@ -85,13 +98,14 @@ const Register = () => {
                         fullWidth
                         variant="contained"
                         sx={{ mt: 3, mb: 2 }}
+                        style={{ backgroundColor: "rgb(231, 76, 60 )", color: 'white' }}
                     >
                         Register
                     </Button>
                     <Grid container>
                         <Grid item>
                             <Link to="/login" variant="body2">
-                                {"Already have an account? Sign In"}
+                                <Box sx={{ pl: 6 }}>{"Already have an account? Sign In"}</Box>
                             </Link>
                         </Grid>
                     </Grid>
