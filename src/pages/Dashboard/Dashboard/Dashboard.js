@@ -30,12 +30,15 @@ import Review from '../Review/Review';
 import MyOrders from '../MyOrders/MyOrders';
 import useAuth from '../../../hooks/useAuth';
 import LogoutIcon from '@mui/icons-material/Logout';
+import MakeAdmin from '../MakeAdmin/MakeAdmin';
+import AddProduct from '../AddProduct/AddProduct';
 
 const drawerWidth = 200;
+const dashLink = { textDecoration: 'none', color: 'gray' };
 
 const Dashboard = (props) => {
     const { window } = props;
-    const { logout } = useAuth();
+    const { logout, admin } = useAuth();
     const [mobileOpen, setMobileOpen] = React.useState(false);
 
     const handleDrawerToggle = () => {
@@ -53,22 +56,20 @@ const Dashboard = (props) => {
         <div>
             <Toolbar />
             <Divider />
-            <NavLink to='/home' style={{ textDecoration: 'none', color: 'gray' }}><Button color="inherit">Home</Button></NavLink>
-            <NavLink to={`${url}`} style={{ textDecoration: 'none', color: 'gray' }}><Button color="inherit">Dashboard</Button></NavLink>
-            <NavLink to={`${url}/myOrders`} style={{ textDecoration: 'none', color: 'gray' }}><Button color="inherit">My Orders</Button></NavLink>
-            <NavLink to={`${url}/review`} style={{ textDecoration: 'none', color: 'gray' }}><Button color="inherit">Review</Button></NavLink>
+            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                <Link to='/home' style={dashLink}><Button color="inherit">Home</Button></Link>
+                <Link to={`${url}`} style={dashLink}><Button color="inherit">Dashboard</Button></Link>
+            </Box>
+            {
+                admin ? <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                    <Link to={`${url}/makeAdmin`} style={dashLink}><Button color="inherit">Make Admin</Button></Link>
+                    <Link to={`${url}/addProduct`} style={dashLink}><Button color="inherit">Add Product</Button></Link>
+                </Box> : <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                    <Link to={`${url}/myOrders`} style={dashLink}><Button color="inherit">My Orders</Button></Link>
+                    <Link to={`${url}/review`} style={dashLink}><Button color="inherit">Review</Button></Link>
+                </Box>
+            }
             <Button variant="outlined" style={{ backgroundColor: "rgb(231, 76, 60 )", color: 'white' }} onClick={handleLogout}><LogoutIcon sx={{ pr: 1 }} style={{ color: "white" }} />Logout</Button>
-
-            <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>
-                            {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                        </ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
-                ))}
-            </List>
         </div>
     );
 
@@ -145,6 +146,12 @@ const Dashboard = (props) => {
                         </Route>
                         <Route path={`${path}/myOrders`}>
                             <MyOrders></MyOrders>
+                        </Route>
+                        <Route path={`${path}/makeAdmin`}>
+                            <MakeAdmin></MakeAdmin>
+                        </Route>
+                        <Route path={`${path}/addProduct`}>
+                            <AddProduct></AddProduct>
                         </Route>
                     </Switch>
 
