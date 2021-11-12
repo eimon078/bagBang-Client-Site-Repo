@@ -80,7 +80,7 @@ const Review = () => {
                         fullWidth
                         onBlur={handleOnBlur}
                         id="Number"
-                        label="Number"
+                        label="Raring"
                         InputProps={{
                             inputProps: {
                                 type: 'number',

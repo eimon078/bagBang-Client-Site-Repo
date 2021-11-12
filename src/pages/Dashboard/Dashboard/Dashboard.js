@@ -32,6 +32,8 @@ import useAuth from '../../../hooks/useAuth';
 import LogoutIcon from '@mui/icons-material/Logout';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import AddProduct from '../AddProduct/AddProduct';
+import ManageProducts from '../ManageProducts/ManageProducts';
+import ManageAllOrders from '../ManageAllOrders/ManageAllOrders';
 
 const drawerWidth = 200;
 const dashLink = { textDecoration: 'none', color: 'gray' };
@@ -58,15 +60,17 @@ const Dashboard = (props) => {
             <Divider />
             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                 <Link to='/home' style={dashLink}><Button color="inherit">Home</Button></Link>
-                <Link to={`${url}`} style={dashLink}><Button color="inherit">Dashboard</Button></Link>
             </Box>
             {
                 admin ? <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                     <Link to={`${url}/makeAdmin`} style={dashLink}><Button color="inherit">Make Admin</Button></Link>
                     <Link to={`${url}/addProduct`} style={dashLink}><Button color="inherit">Add Product</Button></Link>
+                    <Link to={`${url}/manageOrder`} style={dashLink}><Button color="inherit">Manage All Orders</Button></Link>
+                    <Link to={`${url}/manageProducts`} style={dashLink}><Button color="inherit">Manage Products</Button></Link>
                 </Box> : <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                     <Link to={`${url}/myOrders`} style={dashLink}><Button color="inherit">My Orders</Button></Link>
                     <Link to={`${url}/review`} style={dashLink}><Button color="inherit">Review</Button></Link>
+                    <Link to={`${url}/payment`} style={dashLink}><Button color="inherit">Payment</Button></Link>
                 </Box>
             }
             <Button variant="outlined" style={{ backgroundColor: "rgb(231, 76, 60 )", color: 'white' }} onClick={handleLogout}><LogoutIcon sx={{ pr: 1 }} style={{ color: "white" }} />Logout</Button>
@@ -79,6 +83,7 @@ const Dashboard = (props) => {
             <Box sx={{ display: 'flex' }}>
                 <CssBaseline />
                 <AppBar
+                    style={{ backgroundColor: "rgb(245, 176, 65 )", color: 'black', textDecoration: 'none' }}
                     position="fixed"
                     sx={{
                         width: { sm: `calc(100% - ${drawerWidth}px)` },
@@ -93,9 +98,9 @@ const Dashboard = (props) => {
                             onClick={handleDrawerToggle}
                             sx={{ mr: 2, display: { sm: 'none' } }}
                         >
-                            <MenuIcon />
+                            <MenuIcon style={{ color: "white" }} />
                         </IconButton>
-                        <Typography variant="h6" noWrap component="div">
+                        <Typography variant="h6" noWrap component="div" style={{ color: "white" }}>
                             Dashboard
                         </Typography>
                     </Toolbar>
@@ -139,10 +144,15 @@ const Dashboard = (props) => {
                     <Toolbar />
                     <Switch>
                         <Route exact path={path}>
-                            <Pay></Pay>
+                            {
+                                admin ? <ManageAllOrders></ManageAllOrders> : <MyOrders></MyOrders>
+                            }
                         </Route>
                         <Route path={`${path}/review`}>
                             <Review></Review>
+                        </Route>
+                        <Route path={`${path}/payment`}>
+                            <Pay></Pay>
                         </Route>
                         <Route path={`${path}/myOrders`}>
                             <MyOrders></MyOrders>
@@ -152,6 +162,12 @@ const Dashboard = (props) => {
                         </Route>
                         <Route path={`${path}/addProduct`}>
                             <AddProduct></AddProduct>
+                        </Route>
+                        <Route path={`${path}/manageOrder`}>
+                            <ManageAllOrders></ManageAllOrders>
+                        </Route>
+                        <Route path={`${path}/manageProducts`}>
+                            <ManageProducts></ManageProducts>
                         </Route>
                     </Switch>
 
