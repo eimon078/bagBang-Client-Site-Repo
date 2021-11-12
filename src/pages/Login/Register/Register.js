@@ -81,7 +81,7 @@ const Register = () => {
                         name="email"
                         autoComplete="email"
                     />
-                    {passwordError && <Alert severity="error">This is an error alert — check it out!</Alert>}
+                    {passwordError && <Alert severity="error">This is an error alert — password atleast 6 charcter!</Alert>}
                     <TextField
                         margin="normal"
                         required={true}

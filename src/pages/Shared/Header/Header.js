@@ -98,7 +98,6 @@ const Header = () => {
                         <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                             <Typography sx={{ p: 1 }}><Link style={desktopLinkColor} to='/home'>Home</Link></Typography>
                             <Typography sx={{ p: 1 }}><Link style={desktopLinkColor} to='/products'>Our Products</Link></Typography>
-                            <Typography sx={{ p: 1 }}><Link style={desktopLinkColor} to='/login'>Login</Link></Typography>
                             {
                                 user.email ? <>
                                     <Typography sx={{ p: 1 }}><Link style={desktopLinkColor} to="/dashboard">Dashboard</Link></Typography>

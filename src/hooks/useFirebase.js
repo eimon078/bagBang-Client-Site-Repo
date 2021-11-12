@@ -17,7 +17,7 @@ const useFirebase = () => {
         signInWithPopup(auth, googleProvider)
             .then((result) => {
                 const user = result.user;
-                // saveUser(user.email, user.displayName, 'PUT');
+                saveUser(user.email, user.displayName, 'PUT');
                 const destination = location?.state?.from || '/';
                 history.replace(destination);
                 setAuthError('');
@@ -40,7 +40,7 @@ const useFirebase = () => {
                 setUser(newUser);
 
                 //Save user info to database
-                // saveUser(email, name, 'POST');
+                saveUser(email, name, 'POST');
 
                 // send user name to firebase after creation 
                 updateProfile(auth.currentUser, {
@@ -120,7 +120,10 @@ const useFirebase = () => {
             },
             body: JSON.stringify(user)
         })
-            .then()
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            })
     }
 
     return {
