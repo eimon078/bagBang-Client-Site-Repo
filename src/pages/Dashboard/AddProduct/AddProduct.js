@@ -30,6 +30,19 @@ const AddProduct = () => {
     //HandleSubmit
     const handleSubmit = e => {
 
+        fetch('http://localhost:7000/products', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(productData)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                alert('Product Added')
+            })
+
         e.preventDefault();
     };
     return (
@@ -92,7 +105,7 @@ const AddProduct = () => {
                         InputProps={{
                             inputProps: {
                                 type: 'number',
-                                min: 0, max: 5,
+                                min: 0,
                             },
                         }}
                         // inputProps={{ inputMode: 'numeric', pattern: '[0-5]' }}
@@ -105,11 +118,11 @@ const AddProduct = () => {
                             <TextField
                                 onBlur={handleOnBlur}
                                 margin="normal"
-                                name="color"
+                                name="model"
                                 required
                                 fullWidth
-                                id="color"
-                                label="Product Color"
+                                id="model"
+                                label="Product Model"
                             />
                         </Grid>
                         <Grid item xs={12} md={6}>

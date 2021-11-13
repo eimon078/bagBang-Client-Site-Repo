@@ -12,6 +12,7 @@ import AuthProvider from './contexts/AuthProvider/AuthProvider';
 import Products from './pages/Products/Products/Products';
 import PrivateRoute from './pages/Login/PrivateRoute/PrivateRoute';
 import Dashboard from './pages/Dashboard/Dashboard/Dashboard';
+import PlaceOrder from './pages/PlaceOrder/PlaceOrder';
 
 
 function App() {
@@ -37,6 +38,9 @@ function App() {
             </PrivateRoute>
             <PrivateRoute path="/products">
               <Products></Products>
+            </PrivateRoute>
+            <PrivateRoute path="/placeOrder/:orderId">
+              <PlaceOrder></PlaceOrder>
             </PrivateRoute>
             <Route path="*">
               <NotFound></NotFound>

@@ -40,10 +40,7 @@ const Review = () => {
             .then(data => {
                 console.log(data);
             })
-        // console.log('Submitted');
-        const num = parseInt(reviewData.rating, 10);
-        console.log(num, 'ok');
-        // console.log(reviewData);
+
         e.preventDefault();
     };
     return (

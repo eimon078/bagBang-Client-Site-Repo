@@ -12,6 +12,8 @@ import { Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import { Alert } from '@mui/material';
 import { useHistory } from 'react-router';
+import Header from '../../Shared/Header/Header';
+import Footer from '../../Shared/Footer/Footer';
 
 const Register = () => {
     const { registerUser } = useAuth();
@@ -43,75 +45,80 @@ const Register = () => {
     };
 
     return (
-        <Container component="main" maxWidth="xs">
-            <CssBaseline />
-            <Box
-                sx={{
-                    marginTop: 8,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                }}
-            >
-                <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                    <LockOutlinedIcon />
-                </Avatar>
-                <Typography component="h1" variant="h5">
-                    Please Register
-                </Typography>
-                <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
-                    <TextField
-                        margin="normal"
-                        required={true}
-                        fullWidth
-                        onBlur={handleOnBlur}
-                        id="userName"
-                        label="Your Name"
-                        name="userName"
-                        autoComplete="given-name"
-                        autoFocus
-                    />
-                    <TextField
-                        margin="normal"
-                        required={true}
-                        fullWidth
-                        onBlur={handleOnBlur}
-                        id="email"
-                        label="Email Address"
-                        name="email"
-                        autoComplete="email"
-                    />
-                    {passwordError && <Alert severity="error">This is an error alert — password atleast 6 charcter!</Alert>}
-                    <TextField
-                        margin="normal"
-                        required={true}
-                        fullWidth
-                        onBlur={handleOnBlur}
-                        name="password"
-                        label="Password"
-                        type="password"
-                        id="password"
-                        autoComplete="current-password"
-                    />
-                    <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                        sx={{ mt: 3, mb: 2 }}
-                        style={{ backgroundColor: "rgb(231, 76, 60 )", color: 'white' }}
-                    >
-                        Register
-                    </Button>
-                    <Grid container>
-                        <Grid item>
-                            <Link to="/login" variant="body2">
-                                <Box sx={{ pl: 6 }}>{"Already have an account? Sign In"}</Box>
-                            </Link>
+        <div>
+            <Header></Header>
+            <Container component="main" maxWidth="xs">
+                <CssBaseline />
+                <Box
+                    sx={{
+                        marginTop: 4,
+                        marginBottom: 6,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                    }}
+                >
+                    <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+                        <LockOutlinedIcon />
+                    </Avatar>
+                    <Typography component="h1" variant="h5">
+                        Please Register
+                    </Typography>
+                    <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
+                        <TextField
+                            margin="normal"
+                            required={true}
+                            fullWidth
+                            onBlur={handleOnBlur}
+                            id="userName"
+                            label="Your Name"
+                            name="userName"
+                            autoComplete="given-name"
+                            autoFocus
+                        />
+                        <TextField
+                            margin="normal"
+                            required={true}
+                            fullWidth
+                            onBlur={handleOnBlur}
+                            id="email"
+                            label="Email Address"
+                            name="email"
+                            autoComplete="email"
+                        />
+                        {passwordError && <Alert severity="error">This is an error alert — password atleast 6 charcter!</Alert>}
+                        <TextField
+                            margin="normal"
+                            required={true}
+                            fullWidth
+                            onBlur={handleOnBlur}
+                            name="password"
+                            label="Password"
+                            type="password"
+                            id="password"
+                            autoComplete="current-password"
+                        />
+                        <Button
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            sx={{ mt: 3, mb: 2 }}
+                            style={{ backgroundColor: "rgb(231, 76, 60 )", color: 'white' }}
+                        >
+                            Register
+                        </Button>
+                        <Grid container>
+                            <Grid item>
+                                <Link to="/login" variant="body2">
+                                    <Box sx={{ pl: 6 }}>{"Already have an account? Sign In"}</Box>
+                                </Link>
+                            </Grid>
                         </Grid>
-                    </Grid>
+                    </Box>
                 </Box>
-            </Box>
-        </Container>
+            </Container>
+            <Footer></Footer>
+        </div>
     );
 };
 
