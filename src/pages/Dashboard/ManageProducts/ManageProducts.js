@@ -7,7 +7,7 @@ const ManageProducts = () => {
 
     useEffect(() => {
 
-        fetch('http://localhost:7000/products')
+        fetch('https://powerful-headland-98764.herokuapp.com/products')
             .then(res => res.json())
             .then(data => {
                 setProducts(data)
@@ -20,7 +20,7 @@ const ManageProducts = () => {
     const handleDelete = (id) => {
         const procced = window.confirm("Are You sure to Delete?");
         if (procced) {
-            const url = `http://localhost:7000/products/${id}`
+            const url = `https://powerful-headland-98764.herokuapp.com/products/${id}`
             fetch(url, {
                 method: 'DELETE'
             })

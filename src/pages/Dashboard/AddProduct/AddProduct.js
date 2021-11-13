@@ -30,7 +30,7 @@ const AddProduct = () => {
     //HandleSubmit
     const handleSubmit = e => {
 
-        fetch('http://localhost:7000/products', {
+        fetch('https://powerful-headland-98764.herokuapp.com/products', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

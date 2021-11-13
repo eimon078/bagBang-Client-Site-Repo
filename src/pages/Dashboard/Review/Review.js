@@ -13,7 +13,6 @@ const Review = () => {
 
     //Handle OnBlur
     const handleOnBlur = e => {
-        // console.log(e.target.value);
         const name = e.target.name;
         const value = e.target.value;
         setReviewData({ ...reviewData, [name]: value });
@@ -29,7 +28,7 @@ const Review = () => {
         const displayName = user.displayName;
         const email = user.email;
         const userReview = { ...reviewData, displayName, email }
-        fetch('http://localhost:7000/reviews', {
+        fetch('https://powerful-headland-98764.herokuapp.com/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -84,10 +83,7 @@ const Review = () => {
                                 min: 0, max: 5,
                             },
                         }}
-                        // inputProps={{ inputMode: 'numeric', pattern: '[0-5]' }}
                         name="rating"
-                    // autoComplete="email"
-
                     />
                     <Button
                         type="submit"

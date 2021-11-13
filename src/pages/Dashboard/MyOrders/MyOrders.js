@@ -11,7 +11,7 @@ const MyOrders = () => {
 
     //Load my orders
     useEffect(() => {
-        const url = `http://localhost:7000/orders/${user.email}`
+        const url = `https://powerful-headland-98764.herokuapp.com/${user.email}`
         fetch(url)
             .then(res => res.json())
             .then(data => {
@@ -23,7 +23,7 @@ const MyOrders = () => {
     const handelDelete = (id) => {
         const procced = window.confirm("Are You sure to Delete?");
         if (procced) {
-            const url = `http://localhost:7000/orders/${id}`
+            const url = `https://powerful-headland-98764.herokuapp.com/${id}`
             fetch(url, {
                 method: 'DELETE'
             })

@@ -22,7 +22,7 @@ const MakeAdmin = () => {
     const handleSubmit = e => {
         //set admin role
         const user = { email };
-        fetch('http://localhost:7000/users/admin', {
+        fetch('https://powerful-headland-98764.herokuapp.com/users/admin', {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

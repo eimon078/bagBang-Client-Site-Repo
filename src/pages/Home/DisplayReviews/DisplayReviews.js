@@ -6,7 +6,7 @@ import DisplayReview from '../DisplayReview/DisplayReview';
 const DisplayReviews = () => {
     const [reviews, setReviews] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:7000/reviews')
+        fetch('https://powerful-headland-98764.herokuapp.com/reviews')
             .then(res => res.json())
             .then(data => {
                 setReviews(data)

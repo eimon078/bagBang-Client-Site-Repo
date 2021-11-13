@@ -3,7 +3,6 @@ import React from 'react';
 import PersonIcon from '@mui/icons-material/Person';
 import { Box } from '@mui/system';
 import Rating from '@material-ui/lab/Rating';
-// import Box from '@material-ui/core/Box';
 
 const DisplayReview = ({ review }) => {
     const { displayName, reviewText, rating } = review

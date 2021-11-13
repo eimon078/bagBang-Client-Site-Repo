@@ -1,7 +1,7 @@
 import { Button, Container, CssBaseline, Grid, TextField, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import useAuth from '../../hooks/useAuth';
 import Footer from '../Shared/Footer/Footer';
 import Header from '../Shared/Header/Header';
@@ -9,7 +9,9 @@ import Product from '../Shared/Product/Product';
 
 const PlaceOrder = () => {
     const { orderId } = useParams();
+    const history = useHistory();
     const [product, setProduct] = useState({});
+    const [orderData, setOrderData] = useState({})
     const { user } = useAuth()
 
     const displayName = user.displayName;
@@ -17,7 +19,7 @@ const PlaceOrder = () => {
 
     useEffect(() => {
 
-        fetch(`http://localhost:7000/products/${orderId}`)
+        fetch(`const [orderData, setOrderData] = useState({})${orderId}`)
             .then(res => res.json())
             .then(data => {
                 setProduct(data)
@@ -25,7 +27,7 @@ const PlaceOrder = () => {
             })
     }, [])
 
-    const [orderData, setOrderData] = useState({})
+
 
     //Handle OnBlur
     const handleOnBlur = e => {
@@ -41,7 +43,7 @@ const PlaceOrder = () => {
     const handleSubmit = e => {
         const { _id, img, ...exceptId } = product;
 
-        fetch('http://localhost:7000/orders', {
+        fetch('https://powerful-headland-98764.herokuapp.com/orders', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -52,6 +54,7 @@ const PlaceOrder = () => {
             .then(data => {
                 console.log(data);
                 alert('Order Successfully')
+                history.push('/products')
             })
 
         e.preventDefault();

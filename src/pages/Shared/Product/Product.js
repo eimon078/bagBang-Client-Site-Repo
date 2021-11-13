@@ -15,6 +15,7 @@ const Product = ({ product, temp, handleDelete }) => {
         history.push(`/placeOrder/${_id}`);
     }
 
+    //Conditional Button Rendering
     let AuthButton = null;
     if (temp === '1') {
         AuthButton = <></>
@@ -25,6 +26,8 @@ const Product = ({ product, temp, handleDelete }) => {
     else {
         AuthButton = <Button variant="outlined" style={{ backgroundColor: "rgb(231, 76, 60 )", color: 'white' }} onClick={handleBookButton}>Book Now</Button>;
     }
+
+
     return (
         <Grid item xs={12} md={3}>
             <Card sx={{ maxWidth: 345 }}>

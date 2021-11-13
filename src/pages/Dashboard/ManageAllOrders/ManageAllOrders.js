@@ -20,7 +20,7 @@ const ManageAllOrders = () => {
     const handelDelete = (id) => {
         const procced = window.confirm("Are You sure to Delete?");
         if (procced) {
-            const url = `http://localhost:7000/orders/${id}`
+            const url = `https://powerful-headland-98764.herokuapp.com/orders/${id}`
             fetch(url, {
                 method: 'DELETE'
             })
@@ -37,7 +37,7 @@ const ManageAllOrders = () => {
 
     //handle update Status
     const handelUpdate = (id) => {
-        fetch(`http://localhost:7000/orders/${id}`, {
+        fetch(`https://powerful-headland-98764.herokuapp.com/orders/${id}`, {
             method: "PUT",
             headers: {
                 'Content-Type': "application/json"
