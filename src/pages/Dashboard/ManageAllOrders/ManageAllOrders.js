@@ -9,7 +9,7 @@ const ManageAllOrders = () => {
 
     //Load All orders
     useEffect(() => {
-        fetch('http://localhost:7000/orders')
+        fetch('https://powerful-headland-98764.herokuapp.com/orders')
             .then(res => res.json())
             .then(data => {
                 setAllOrders(data);
@@ -62,13 +62,13 @@ const ManageAllOrders = () => {
                     <Thead>
                         <Tr>
                             <Th>Order No</Th>
-                            <Th>Order Id</Th>
                             <Th>Order By</Th>
                             <Th>Product Name</Th>
                             <Th>Price</Th>
                             <Th>Brand</Th>
                             <Th>Model</Th>
                             <Th>Status</Th>
+                            <Th>Update Status</Th>
                             <Th>Delete</Th>
                         </Tr>
                     </Thead>
@@ -77,13 +77,13 @@ const ManageAllOrders = () => {
                         {
                             allOrders.map((order, index) => <Tr key={order._id}>
                                 <Td>{index + 1}</Td>
-                                <Td>{order._id}</Td>
-                                <Td>{order.displayName}</Td>
+                                <Td>{order.email}</Td>
                                 <Td>{order.productName}</Td>
                                 <Td>{order.price}</Td>
                                 <Td>{order.brand}</Td>
                                 <Td>{order.model}</Td>
-                                <Td><Button variant="outlined" style={{ backgroundColor: "rgb(245, 176, 65 )", color: 'White' }} onClick={() => handelUpdate(order._id)}>{order.status}</Button></Td>
+                                <Td>{order.status}</Td>
+                                <Td><Button variant="outlined" style={{ backgroundColor: "white", color: 'rgb(245, 176, 65 )' }} onClick={() => handelUpdate(order._id)}>Update</Button></Td>
                                 <Td><Button variant="outlined" style={{ backgroundColor: "white", color: 'red' }} onClick={() => handelDelete(order._id)}>Delete</Button></Td>
                             </Tr>)
                         }

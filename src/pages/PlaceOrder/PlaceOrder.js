@@ -83,7 +83,7 @@ const PlaceOrder = () => {
                                 <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
                                     <TextField
                                         margin="normal"
-                                        required={true}
+                                        required
                                         fullWidth
                                         disabled
                                         defaultValue={displayName}
@@ -95,7 +95,7 @@ const PlaceOrder = () => {
                                     <TextField
                                         margin="normal"
                                         disabled
-                                        required={true}
+                                        required
                                         fullWidth
                                         defaultValue={email}
                                         id="email"
@@ -107,7 +107,7 @@ const PlaceOrder = () => {
                                         onBlur={handleOnBlur}
                                         margin="normal"
                                         name="address"
-                                        required={true}
+                                        required
                                         fullWidth
                                         id="address"
                                         label="Address"
@@ -115,7 +115,7 @@ const PlaceOrder = () => {
                                     />
                                     <TextField
                                         margin="normal"
-                                        required={true}
+                                        required
                                         fullWidth
                                         onBlur={handleOnBlur}
                                         id="phone"

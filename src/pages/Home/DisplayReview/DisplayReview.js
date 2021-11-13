@@ -13,7 +13,7 @@ const DisplayReview = ({ review }) => {
                 <Box sx={{ typography: 'subtitle2', textAlign: 'left', px: 1, py: 1 }}>{reviewText}</Box>
                 <Box align="left" mb={1} borderColor="transparent">
                     <Rating
-                        value={rating}
+                        value={parseInt(rating)}
                         name="rating"
                         readOnly="true"
                     />
