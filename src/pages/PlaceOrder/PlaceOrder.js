@@ -19,7 +19,7 @@ const PlaceOrder = () => {
 
     useEffect(() => {
 
-        fetch(`const [orderData, setOrderData] = useState({})${orderId}`)
+        fetch(`https://powerful-headland-98764.herokuapp.com/products/${orderId}`)
             .then(res => res.json())
             .then(data => {
                 setProduct(data)
@@ -95,7 +95,7 @@ const PlaceOrder = () => {
                                     <TextField
                                         margin="normal"
                                         disabled
-                                        required
+                                        required={true}
                                         fullWidth
                                         defaultValue={email}
                                         id="email"
@@ -107,7 +107,7 @@ const PlaceOrder = () => {
                                         onBlur={handleOnBlur}
                                         margin="normal"
                                         name="address"
-                                        required
+                                        required={true}
                                         fullWidth
                                         id="address"
                                         label="Address"

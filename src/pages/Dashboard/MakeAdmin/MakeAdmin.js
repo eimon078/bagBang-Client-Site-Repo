@@ -33,11 +33,14 @@ const MakeAdmin = () => {
             .then(data => {
                 console.log(data);
 
-                if (data.modifiedCount > 0) {
+                if (data.modifiedCount > 0 && data.matchedCount > 0) {
                     alert("Made Admin Successfully");
                 }
-                else {
+                else if (data.matchedCount) {
                     alert("Already Admin!");
+                }
+                else {
+                    alert("User not Exist");
                 }
             })
         console.log('Submitted');
