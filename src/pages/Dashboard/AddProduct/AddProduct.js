@@ -1,17 +1,11 @@
 import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { Link } from 'react-router-dom';
-import useAuth from '../../../hooks/useAuth';
-import { Alert } from '@mui/material';
-import { useHistory } from 'react-router';
 
 const AddProduct = () => {
 
@@ -23,7 +17,6 @@ const AddProduct = () => {
         const value = e.target.value;
         const newValue = { ...productData, [name]: value };
         setProductData(newValue);
-        console.log(newValue);
 
     }
 
@@ -39,12 +32,12 @@ const AddProduct = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 alert('Product Added')
             })
 
         e.preventDefault();
     };
+
     return (
         <Container component="main" maxWidth="xs">
             <CssBaseline />
@@ -108,9 +101,7 @@ const AddProduct = () => {
                                 min: 0,
                             },
                         }}
-                        // inputProps={{ inputMode: 'numeric', pattern: '[0-5]' }}
                         name="price"
-                    // autoComplete="email"
 
                     />
                     <Grid container spacing={2}>

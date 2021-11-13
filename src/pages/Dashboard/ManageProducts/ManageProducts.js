@@ -11,7 +11,6 @@ const ManageProducts = () => {
             .then(res => res.json())
             .then(data => {
                 setProducts(data)
-                console.log(data);
             })
     }, [])
 
@@ -29,7 +28,6 @@ const ManageProducts = () => {
                     if (data.deletedCount === 1) {
                         alert('Delete Successfully');
                         const remainingProducts = products.filter(product => product._id !== id);
-                        // setMyOrdrs(remainingUsers);
                         setProducts(remainingProducts);
                     }
                 })

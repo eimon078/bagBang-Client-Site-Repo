@@ -16,10 +16,6 @@ const Review = () => {
         const name = e.target.name;
         const value = e.target.value;
         setReviewData({ ...reviewData, [name]: value });
-        console.log(reviewData);
-
-
-
     }
 
     //Handle form submit

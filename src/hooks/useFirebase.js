@@ -48,11 +48,7 @@ const useFirebase = () => {
                     displayName: name
                 })
                     .then(() => {
-                        // Profile updated!
-                        // ...
                     }).catch((error) => {
-                        // An error occurred
-                        // ...
                     });
 
                 history.replace('/');

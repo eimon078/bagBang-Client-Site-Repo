@@ -14,7 +14,6 @@ const MakeAdmin = () => {
     //Handle OnBlur
     const handleOnBlur = e => {
         setEmail(e.target.value);
-        console.log(email);
 
     }
 
@@ -31,7 +30,6 @@ const MakeAdmin = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
 
                 if (data.modifiedCount > 0 && data.matchedCount > 0) {
                     alert("Made Admin Successfully");
@@ -43,7 +41,6 @@ const MakeAdmin = () => {
                     alert("User not Exist");
                 }
             })
-        console.log('Submitted');
         e.preventDefault();
     };
     return (

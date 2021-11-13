@@ -23,7 +23,6 @@ const PlaceOrder = () => {
             .then(res => res.json())
             .then(data => {
                 setProduct(data)
-                console.log(data);
             })
     }, [])
 
@@ -35,7 +34,6 @@ const PlaceOrder = () => {
         const value = e.target.value;
         const newValue = { ...orderData, [name]: value };
         setOrderData(newValue);
-        console.log(newValue);
 
     }
 
@@ -52,7 +50,6 @@ const PlaceOrder = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 alert('Order Successfully')
                 history.push('/products')
             })
