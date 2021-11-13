@@ -7,7 +7,7 @@ import { Button, CardActions, Grid } from '@mui/material';
 import { useHistory } from 'react-router';
 
 
-const Product = ({ product, temp }) => {
+const Product = ({ product, temp, handleDelete }) => {
     const { productName, img, _id } = product
     const history = useHistory();
 
@@ -18,6 +18,9 @@ const Product = ({ product, temp }) => {
     let AuthButton = null;
     if (temp === '1') {
         AuthButton = <></>
+    }
+    else if (temp === '2') {
+        AuthButton = AuthButton = <Button variant="outlined" style={{ backgroundColor: "rgb(231, 76, 60 )", color: 'white' }} onClick={() => handleDelete(_id)}>Delete Product</Button>;
     }
     else {
         AuthButton = <Button variant="outlined" style={{ backgroundColor: "rgb(231, 76, 60 )", color: 'white' }} onClick={handleBookButton}>Book Now</Button>;

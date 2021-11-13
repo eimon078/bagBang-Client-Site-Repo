@@ -32,6 +32,13 @@ const MakeAdmin = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
+
+                if (data.modifiedCount > 0) {
+                    alert("Made Admin Successfully");
+                }
+                else {
+                    alert("Already Admin!");
+                }
             })
         console.log('Submitted');
         e.preventDefault();

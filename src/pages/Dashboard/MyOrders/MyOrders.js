@@ -31,7 +31,7 @@ const MyOrders = () => {
                 .then(data => {
                     if (data.deletedCount === 1) {
                         alert('Delete Successfully');
-                        const remainingUsers = myOrders.filter(booking => booking._id !== id);
+                        const remainingUsers = myOrders.filter(order => order._id !== id);
                         setMyOrdrs(remainingUsers);
                     }
                 })
@@ -48,18 +48,18 @@ const MyOrders = () => {
                             <Th>Price</Th>
                             <Th>Brand</Th>
                             <Th>Model</Th>
-                            <Th>Cancle</Th>
+                            <Th>Cancel</Th>
                         </Tr>
                     </Thead>
                     <Tbody>
 
                         {
-                            myOrders.map(order => <Tr key={myOrders._id}>
+                            myOrders.map(order => <Tr key={order._id}>
                                 <Td>{order.productName}</Td>
                                 <Td>{order.price}</Td>
                                 <Td>{order.brand}</Td>
                                 <Td>{order.model}</Td>
-                                <Td><Button variant="outlined" style={{ backgroundColor: "white", color: 'red' }} onClick={() => { handelDelete(order._id) }}>Cancle</Button></Td>
+                                <Td><Button variant="outlined" style={{ backgroundColor: "white", color: 'red' }} onClick={() => { handelDelete(order._id) }}>Cancel</Button></Td>
                             </Tr>)
                         }
 
