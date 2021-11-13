@@ -20,7 +20,6 @@ const Review = () => {
 
     //Handle form submit
     const handleSubmit = e => {
-        //set admin role
         const displayName = user.displayName;
         const email = user.email;
         const userReview = { ...reviewData, displayName, email }
@@ -33,7 +32,10 @@ const Review = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                if (data.insertedId) {
+                    alert("Added Review")
+                }
+
             })
 
         e.preventDefault();
@@ -55,8 +57,8 @@ const Review = () => {
                 <Box component="form" onSubmit={handleSubmit} sx={{ mt: 2 }}>
                     <TextField
                         margin="normal"
-                        id="outlined-multiline-static"
-                        label="Review*"
+                        // id="outlined-multiline-static"
+                        label="Review"
                         name="reviewText"
                         onBlur={handleOnBlur}
                         required={true}
@@ -88,7 +90,7 @@ const Review = () => {
                         sx={{ mt: 3, mb: 2 }}
                         style={{ backgroundColor: "rgb(231, 76, 60 )", color: 'white' }}
                     >
-                        Make Admin
+                        Submit Review
                     </Button>
                 </Box>
             </Box>

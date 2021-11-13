@@ -25,7 +25,7 @@ const Product = ({ product, temp, handleDelete }) => {
         AuthButton = AuthButton = <Button variant="outlined" style={{ backgroundColor: "rgb(231, 76, 60 )", color: 'white' }} onClick={() => handleDelete(_id)}>Delete Product</Button>;
     }
     else {
-        AuthButton = <Button variant="outlined" style={{ backgroundColor: "rgb(231, 76, 60 )", color: 'white' }} onClick={handleBookButton}>Book Now</Button>;
+        AuthButton = <Button variant="outlined" style={{ backgroundColor: "rgb(231, 76, 60 )", color: 'white' }} onClick={handleBookButton}>Buy Now</Button>;
     }
 
 
