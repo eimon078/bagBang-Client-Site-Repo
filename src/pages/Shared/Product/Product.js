@@ -5,10 +5,11 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActions, Grid } from '@mui/material';
 import { useHistory } from 'react-router';
+import { Box } from '@mui/system';
 
 
 const Product = ({ product, temp, handleDelete }) => {
-    const { productName, img, _id } = product
+    const { productName, img, _id, description, price, model, brand } = product
     const history = useHistory();
 
     const handleBookButton = () => {
@@ -38,13 +39,13 @@ const Product = ({ product, temp, handleDelete }) => {
                     alt="green iguana"
                 />
                 <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                        {productName}
+                    <Box sx={{ typography: 'subtitle2', textAlign: 'left', fontWeight: 'bold', py: 2 }}>{productName}</Box>
+                    <Typography variant="body2" textAlign='left'>
+                        {description}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                        Lizards are a widespread group of squamate reptiles, with over 6,000
-                        species, ranging across all continents except Antarctica
-                    </Typography>
+                    <Box sx={{ typography: 'body2', textAlign: 'left', pt: 1 }}>Model: {model}</Box>
+                    <Box sx={{ typography: 'body2', textAlign: 'left' }}>Model: {brand}</Box>
+                    <Box sx={{ typography: 'subtitle2', textAlign: 'left', fontWeight: 'bold' }}>Price: {price}</Box>
                 </CardContent>
                 <CardActions>
                     {AuthButton}

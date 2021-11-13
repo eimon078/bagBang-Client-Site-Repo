@@ -44,11 +44,20 @@ const MyOrders = () => {
                 <Table>
                     <Thead>
                         <Tr>
-                            <Th>Product Name</Th>
-                            <Th>Price</Th>
-                            <Th>Brand</Th>
-                            <Th>Model</Th>
-                            <Th>Cancel</Th>
+                            {
+                                myOrders.length ? <>
+                                    <Th>Product Name</Th>
+                                    <Th>Price</Th>
+                                    <Th>Brand</Th>
+                                    <Th>Model</Th>
+                                    <Th>Cancel</Th>
+
+                                </>
+                                    :
+                                    <>
+                                        <Typography variant="h6" style={{ color: "black" }}>Nothing Yet</Typography>
+                                    </>
+                            }
                         </Tr>
                     </Thead>
                     <Tbody>

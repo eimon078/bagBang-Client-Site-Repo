@@ -1,4 +1,4 @@
-import { Button, Container } from '@mui/material';
+import { Button, Container, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
@@ -61,15 +61,23 @@ const ManageAllOrders = () => {
                 <Table>
                     <Thead>
                         <Tr>
-                            <Th>Order No</Th>
-                            <Th>Order By</Th>
-                            <Th>Product Name</Th>
-                            <Th>Price</Th>
-                            <Th>Brand</Th>
-                            <Th>Model</Th>
-                            <Th>Status</Th>
-                            <Th>Update Status</Th>
-                            <Th>Delete</Th>
+                            {
+                                allOrders.length ? <>
+                                    <Th>Order No</Th>
+                                    <Th>Order By</Th>
+                                    <Th>Product Name</Th>
+                                    <Th>Price</Th>
+                                    <Th>Brand</Th>
+                                    <Th>Model</Th>
+                                    <Th>Status</Th>
+                                    <Th>Update Status</Th>
+                                    <Th>Delete</Th>
+                                </>
+                                    :
+                                    <>
+                                        <Typography variant="h6" style={{ color: "black" }}>Nothing Yet</Typography>
+                                    </>
+                            }
                         </Tr>
                     </Thead>
                     <Tbody>
