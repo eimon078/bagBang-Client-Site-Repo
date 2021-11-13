@@ -61,23 +61,15 @@ const ManageAllOrders = () => {
                 <Table>
                     <Thead>
                         <Tr>
-                            {
-                                allOrders.length ? <>
-                                    <Th>Order No</Th>
-                                    <Th>Order By</Th>
-                                    <Th>Product Name</Th>
-                                    <Th>Price</Th>
-                                    <Th>Brand</Th>
-                                    <Th>Model</Th>
-                                    <Th>Status</Th>
-                                    <Th>Update Status</Th>
-                                    <Th>Delete</Th>
-                                </>
-                                    :
-                                    <>
-                                        <Typography variant="h6" style={{ color: "black" }}>Nothing Yet</Typography>
-                                    </>
-                            }
+                            <Th>Order No</Th>
+                            <Th>Order By</Th>
+                            <Th>Product Name</Th>
+                            <Th>Price</Th>
+                            <Th>Brand</Th>
+                            <Th>Model</Th>
+                            <Th>Status</Th>
+                            <Th>Update Status</Th>
+                            <Th>Delete</Th>
                         </Tr>
                     </Thead>
                     <Tbody>
